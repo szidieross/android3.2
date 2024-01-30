@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Product> productList = new ArrayList<>();
     private EditText code, name, price;
     private TextView productsTextView;
-    private Button cancel, add;
+    private Button cancel, add, show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         price = findViewById(R.id.priceInput);
         cancel = findViewById(R.id.cancel);
         add = findViewById(R.id.add);
+        show=findViewById(R.id.show);
         productsTextView = findViewById(R.id.products);
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addProduct();
+            }
+        });
+
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateProducts();
             }
         });
     }
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Product product = new Product(codeText, nameText, priceText);
 
         productList.add(product);
-        updateProducts();
+//        updateProducts();
 
         clearField();
     }
